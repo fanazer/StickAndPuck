@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SAP.API.Common.Entities.People;
+using SAP.API.DataAccess.DbContext;
 
 #endregion
 
@@ -13,49 +14,15 @@ namespace SAP.API.DataAccess.Repositories
     {
         #region Private Fileds
 
-        private readonly IEnumerable<Player> _players;
+        private readonly IDbContextFactory _dbContextFactory;
 
         #endregion
 
         #region Constructor
 
-        public PlayersRepository()
+        public PlayersRepository(IDbContextFactory dbContextFactory)
         {
-            _players = new List<Player>
-            {
-                new Player
-                {
-                    Id = 1,
-                    Age = 20,
-                    FirstName = "Bob",
-                    LastName = "Bobrov",
-                    TeamId = 1
-                },
-                new Player
-                {
-                    Id = 2,
-                    Age = 22,
-                    FirstName = "Sasha",
-                    LastName = "Voronov",
-                    TeamId = 2
-                },
-                new Player
-                {
-                    Id = 3,
-                    Age = 26,
-                    FirstName = "Vova",
-                    LastName = "Kozinov",
-                    TeamId = 1
-                },
-                new Player
-                {
-                    Id = 4,
-                    Age = 10,
-                    FirstName = "Leha",
-                    LastName = "Popov",
-                    TeamId = 3
-                },
-            };
+            _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
         }
 
         #endregion
@@ -64,12 +31,15 @@ namespace SAP.API.DataAccess.Repositories
 
         public IEnumerable<Player> FindBy(Predicate<Player> predicate)
         {
-            return _players.Where(x => predicate(x));
+            return null;
         }
 
         public Player Get(int id)
         {
-            return _players.FirstOrDefault(x => x.Id == id);
+            using (var dbContext = _dbContextFactory.Create())
+            {
+                return dbContext.Query<Player>("SelectPlayerById", new {Id = id}).First();
+            }
         }
 
         public void Remove(int id)
