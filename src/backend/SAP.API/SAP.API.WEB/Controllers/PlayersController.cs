@@ -38,7 +38,7 @@ namespace SAP.API.WEB.Controllers
         }
 
         // GET: api/Players/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public Player Get(int id)
         {
             return _provider.Get(id);
