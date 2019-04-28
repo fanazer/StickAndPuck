@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.WEB", "SAP.WEB\SAP.WEB.csproj", "{8249F546-20E5-4B0C-B524-77356A4EDCC5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F7282F25-B320-4027-AEA7-D544A622CCF9} = {F7282F25-B320-4027-AEA7-D544A622CCF9}
+		{836FD46F-36EF-45F1-80A5-FB4BD2A794C7} = {836FD46F-36EF-45F1-80A5-FB4BD2A794C7}
+		{B2260173-2ABF-4F20-8505-610354AAF9C7} = {B2260173-2ABF-4F20-8505-610354AAF9C7}
+		{570EE275-2C2F-4012-9267-21F241624999} = {570EE275-2C2F-4012-9267-21F241624999}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Business", "SAP.Business\SAP.Business.csproj", "{570EE275-2C2F-4012-9267-21F241624999}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F7282F25-B320-4027-AEA7-D544A622CCF9} = {F7282F25-B320-4027-AEA7-D544A622CCF9}
+		{836FD46F-36EF-45F1-80A5-FB4BD2A794C7} = {836FD46F-36EF-45F1-80A5-FB4BD2A794C7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Common", "SAP.Common\SAP.Common.csproj", "{F7282F25-B320-4027-AEA7-D544A622CCF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.DataAccess", "SAP.DataAccess\SAP.DataAccess.csproj", "{836FD46F-36EF-45F1-80A5-FB4BD2A794C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F7282F25-B320-4027-AEA7-D544A622CCF9} = {F7282F25-B320-4027-AEA7-D544A622CCF9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Dependencies", "SAP.Dependencies\SAP.Dependencies.csproj", "{B2260173-2ABF-4F20-8505-610354AAF9C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F7282F25-B320-4027-AEA7-D544A622CCF9} = {F7282F25-B320-4027-AEA7-D544A622CCF9}
+		{836FD46F-36EF-45F1-80A5-FB4BD2A794C7} = {836FD46F-36EF-45F1-80A5-FB4BD2A794C7}
+		{570EE275-2C2F-4012-9267-21F241624999} = {570EE275-2C2F-4012-9267-21F241624999}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8249F546-20E5-4B0C-B524-77356A4EDCC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8249F546-20E5-4B0C-B524-77356A4EDCC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8249F546-20E5-4B0C-B524-77356A4EDCC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8249F546-20E5-4B0C-B524-77356A4EDCC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{570EE275-2C2F-4012-9267-21F241624999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570EE275-2C2F-4012-9267-21F241624999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570EE275-2C2F-4012-9267-21F241624999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570EE275-2C2F-4012-9267-21F241624999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7282F25-B320-4027-AEA7-D544A622CCF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7282F25-B320-4027-AEA7-D544A622CCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7282F25-B320-4027-AEA7-D544A622CCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7282F25-B320-4027-AEA7-D544A622CCF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{836FD46F-36EF-45F1-80A5-FB4BD2A794C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{836FD46F-36EF-45F1-80A5-FB4BD2A794C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{836FD46F-36EF-45F1-80A5-FB4BD2A794C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{836FD46F-36EF-45F1-80A5-FB4BD2A794C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2260173-2ABF-4F20-8505-610354AAF9C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2260173-2ABF-4F20-8505-610354AAF9C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2260173-2ABF-4F20-8505-610354AAF9C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2260173-2ABF-4F20-8505-610354AAF9C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D72C87C5-E8EB-4C77-A01F-C862FD89887C}
+	EndGlobalSection
+EndGlobal
