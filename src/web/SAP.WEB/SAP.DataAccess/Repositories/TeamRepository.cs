@@ -5,12 +5,13 @@ using SAP.DataAccess.DbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SAP.DataAccess.Repositories.Contracts;
 
 #endregion
 
 namespace SAP.DataAccess.Repositories
 {
-    internal sealed class TeamsRepository : IRepository<Team>
+    internal sealed class TeamsesRepository : ITeamsRepository
     {
         #region Private Fileds
 
@@ -20,7 +21,7 @@ namespace SAP.DataAccess.Repositories
 
         #region Constructor
 
-        public TeamsRepository(IDbContextFactory dbContextFactory)
+        public TeamsesRepository(IDbContextFactory dbContextFactory)
         {
             _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
         }
@@ -29,12 +30,7 @@ namespace SAP.DataAccess.Repositories
 
         #region IRepository Implementation
 
-        public IEnumerable<Team> FindBy(Predicate<Team> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Team Get(int id)
+        public Team GetById(int id)
         {
             using (var dbContext = _dbContextFactory.Create())
             {

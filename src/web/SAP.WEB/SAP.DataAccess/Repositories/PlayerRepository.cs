@@ -5,12 +5,13 @@ using SAP.DataAccess.DbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SAP.DataAccess.Repositories.Contracts;
 
 #endregion
 
 namespace SAP.DataAccess.Repositories
 {
-    internal sealed class PlayersRepository : IRepository<Player>
+    internal sealed class PlayersesRepository : IPlayersRepository
     {
         #region Private Fileds
 
@@ -20,7 +21,7 @@ namespace SAP.DataAccess.Repositories
 
         #region Constructor
 
-        public PlayersRepository(IDbContextFactory dbContextFactory)
+        public PlayersesRepository(IDbContextFactory dbContextFactory)
         {
             _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
         }
@@ -29,16 +30,18 @@ namespace SAP.DataAccess.Repositories
 
         #region IRepository Implementation
 
-        public IEnumerable<Player> FindBy(Predicate<Player> predicate)
-        {
-            return null;
-        }
-
-        public Player Get(int id)
+        public Player GetById(int id)
         {
             using (var dbContext = _dbContextFactory.Create())
             {
                 return dbContext.Query<Player>("SelectPlayerById", new { Id = id }).First();
+            }
+        }
+        public IEnumerable<Player> GetByTop(int quantity)
+        {
+            using (var dbContext = _dbContextFactory.Create())
+            {
+                return dbContext.Query<Player>("SelectPlayersByTop", new { Quantity = quantity }).ToList();
             }
         }
 

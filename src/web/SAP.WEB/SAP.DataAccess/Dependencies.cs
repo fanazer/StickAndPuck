@@ -1,10 +1,9 @@
 ﻿#region Using
 
 using Microsoft.Extensions.DependencyInjection;
-using SAP.Common.Entities;
-using SAP.Common.Entities.People;
 using SAP.DataAccess.DbContext;
 using SAP.DataAccess.Repositories;
+using SAP.DataAccess.Repositories.Contracts;
 
 #endregion
 
@@ -14,9 +13,9 @@ namespace SAP.DataAccess
     {
         public Dependencies(IServiceCollection collection)
         {
-            collection.AddTransient<IRepository<Player>, PlayersRepository>();
+            collection.AddTransient<IPlayersRepository, PlayersesRepository>();
             collection.AddSingleton<IDbContextFactory, DbContextFactory>();
-            collection.AddTransient<IRepository<Team>, TeamsRepository>();
+            collection.AddTransient<ITeamsRepository, TeamsesRepository>();
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿#region Using
 
+using SAP.Business.Providers.Contracts;
 using SAP.Common.Entities.People;
-using SAP.DataAccess.Repositories;
+using SAP.DataAccess.Repositories.Contracts;
 using System;
 using System.Collections.Generic;
 
@@ -9,17 +10,17 @@ using System.Collections.Generic;
 
 namespace SAP.Business.Providers.People
 {
-    internal sealed class PlayerProvider : IProvider<Player>
+    internal sealed class PlayerProvider : IPlayerProvider
     {
         #region Private Fileds
 
-        private readonly IRepository<Player> _repository;
+        private readonly IPlayersRepository _repository;
 
         #endregion
 
         #region Constructor
 
-        public PlayerProvider(IRepository<Player> repository)
+        public PlayerProvider(IPlayersRepository repository)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
@@ -28,21 +29,20 @@ namespace SAP.Business.Providers.People
 
         #region IProvider Implementation
 
-        public IEnumerable<Player> FindBy(Predicate<Player> predicate)
-        {
-            if (predicate == null)
-                throw new ArgumentNullException(nameof(predicate));
-
-            return _repository.FindBy(predicate);
-        }
-
-        public Player Get(int id)
+        public Player GetById(int id)
         {
             if (id <= 0)
-            {
                 throw new ArgumentException("Id is not valid", nameof(id));
-            }
-            return _repository.Get(id);
+
+            return _repository.GetById(id);
+        }
+
+        public IEnumerable<Player> GetByTop(int quantity)
+        {
+            if (quantity <= 0)
+                throw new ArgumentException("Quantity is not valid", nameof(quantity));
+
+            return _repository.GetByTop(quantity);
         }
 
         #endregion

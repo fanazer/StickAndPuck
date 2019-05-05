@@ -2,9 +2,8 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using SAP.Business.Providers;
+using SAP.Business.Providers.Contracts;
 using SAP.Business.Providers.People;
-using SAP.Common.Entities;
-using SAP.Common.Entities.People;
 
 #endregion
 
@@ -14,8 +13,8 @@ namespace SAP.Business
     {
         public Dependencies(IServiceCollection collection)
         {
-            collection.AddTransient<IProvider<Player>, PlayerProvider>();
-            collection.AddTransient<IProvider<Team>, TeamProvider>();
+            collection.AddTransient<IPlayerProvider, PlayerProvider>();
+            collection.AddTransient<ITeamsProvider, TeamProvider>();
         }
     }
 }

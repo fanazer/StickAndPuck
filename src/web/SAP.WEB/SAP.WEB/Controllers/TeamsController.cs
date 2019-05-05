@@ -1,7 +1,7 @@
 ﻿#region Using
 
 using Microsoft.AspNetCore.Mvc;
-using SAP.Business.Providers.People;
+using SAP.Business.Providers.Contracts;
 using SAP.Common.Entities;
 using System;
 
@@ -15,13 +15,13 @@ namespace SAP.WEB.Controllers
     {
         #region Private Fileds
 
-        private readonly IProvider<Team> _provider;
+        private readonly ITeamsProvider _provider;
 
         #endregion
 
         #region Constructor
 
-        public TeamsController(IProvider<Team> provider)
+        public TeamsController(ITeamsProvider provider)
         {
             _provider = provider ?? throw new ArgumentNullException(nameof(provider));
         }
@@ -32,7 +32,7 @@ namespace SAP.WEB.Controllers
         [HttpGet("{id}")]
         public Team Get(int id)
         {
-            return _provider.Get(id);
+            return _provider.GetById(id);
         }
     }
 }

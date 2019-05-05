@@ -5,6 +5,7 @@ using SAP.Business.Providers.People;
 using SAP.Common.Entities.People;
 using System;
 using System.Collections.Generic;
+using SAP.Business.Providers.Contracts;
 
 #endregion
 
@@ -16,13 +17,13 @@ namespace SAP.WEB.Controllers
     {
         #region Private Fileds
 
-        private readonly IProvider<Player> _provider;
+        private readonly IPlayerProvider _provider;
 
         #endregion
 
         #region Constructor
 
-        public PlayersController(IProvider<Player> provider)
+        public PlayersController(IPlayerProvider provider)
         {
 
             _provider = provider ?? throw new ArgumentNullException(nameof(provider));
@@ -30,18 +31,18 @@ namespace SAP.WEB.Controllers
 
         #endregion
 
-        // GET: api/Players
-        [HttpGet]
-        public IEnumerable<Player> Get()
-        {
-            return _provider.FindBy(player => player.Id > 1);
-        }
-
         // GET: api/Players/5
         [HttpGet("{id}")]
-        public Player Get(int id)
+        public Player GetById(int id)
         {
-            return _provider.Get(id);
+            return _provider.GetById(id);
+        }
+
+        // POST: api/Players
+        [HttpPost]
+        public IEnumerable<Player> GetByTop([FromBody]int quantity)
+        {
+            return _provider.GetByTop(quantity);
         }
     }
 }
