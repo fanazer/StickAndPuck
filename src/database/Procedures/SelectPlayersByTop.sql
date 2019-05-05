@@ -1,7 +1,7 @@
-create procedure [SelectPlayersByTeamId]
-@TeamId int
+create procedure [SelectPlayersByTop]
+@Quantity int
 as
-select [Id],
+select top (@Quantity) [Id],
 [FirstName],
 [LastName],
 [Birthday],
@@ -10,5 +10,5 @@ select [Id],
 [TeamId],
 [PhotoPath],
 [Rating] from [Players] as [P]
-where [P].[TeamId] = @TeamId;
+order by [P].[Rating] 
 go

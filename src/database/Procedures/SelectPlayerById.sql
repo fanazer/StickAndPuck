@@ -7,6 +7,7 @@ select [Id],
 [Birthday],
 [MaritalStatusId],
 [Salary],
-[PhotoPath] from [Players] as [P]
+[PhotoPath],
+[Rating] from [Players] as [P]
 where @Id = [P].[Id];
 go

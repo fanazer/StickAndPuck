@@ -6,7 +6,8 @@ create table [Players](
 [TeamId] int null,
 [MaritalStatusId] int null,
 [Salary] int null,
-[PhotoPath] nvarchar(max));
+[PhotoPath] nvarchar(max),
+[Rating] int unique);
 
 go
 
